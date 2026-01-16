@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untold Reality of Media</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-dark: #0b0b0b;
+  --bg-light: #f5f1e8;
+  --text-dark: #f5f1e8;
+  --text-light: #0b0b0b;
+  --accent: #8b6f4e;
+  --navy: #0f1c2e;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-dark);
+  transition: background 0.4s, color 0.4s;
+}
+
+body.light {
+  background: var(--bg-light);
+  color: var(--text-light);
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- HERO ---------- */
+#cover {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 60px;
+  align-items: center;
+}
+
+.hero-img {
+  border-radius: 20px;
+  min-height: 320px;
+  background:
+    linear-gradient(180deg, rgba(15,28,46,0.4), rgba(0,0,0,0.8)),
+    url("https://cdn.pixabay.com/photo/2016/11/29/04/17/newspaper-1866885_1280.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+button {
+  background: var(--accent);
+  border: none;
+  color: white;
+  padding: 14px 26px;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* ---------- NAV ---------- */
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(15,28,46,0.9);
+  padding: 14px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+nav input {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: none;
+}
+
+/* ---------- CONTENT ---------- */
+main {
+  padding: 80px 12%;
+}
+
+.section {
+  margin-bottom: 80px;
+}
+
+.section img {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.card {
+  border-left: 6px solid var(--accent);
+  padding: 30px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  padding: 60px 12%;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.toggle {
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<section id="cover" class="fade">
+  <div>
+    <h1>Untold Reality<br>of Media</h1>
+    <p>A critical reflection on authorship, audience, and media influence.</p>
+    <button onclick="scrollToContent()">Enter Blog</button>
+  </div>
+  <div class="hero-img"></div>
+</section>
+
+<nav>
+  <h2>Untold Reality of Media</h2>
+  <div>
+    <input placeholder="Search…" onkeyup="searchSections(this.value)">
+    <span class="toggle" onclick="toggleMode()">🌓</span>
+  </div>
+</nav>
+
+<main>
+
+<div class="section fade">
+  <img src="https://cdn.pixabay.com/photo/2017/08/06/11/44/journalism-2592336_1280.jpg">
+  <div class="card">
+    <h3>1. Why is the author writing this?</h3>
+    <p>Sample placeholder text explaining the author’s intent.</p>
+  </div>
+</div>
+
+<div class="section fade">
+  <img src="https://cdn.pixabay.com/photo/2016/11/29/09/08/adult-1868750_1280.jpg">
+  <div class="card">
+    <h3>2. To whom is the author writing?</h3>
+    <p>Sample placeholder text describing the intended audience.</p>
+  </div>
+</div>
+
+<div class="section fade">
+  <img src="https://cdn.pixabay.com/photo/2015/09/05/20/02/office-925806_1280.jpg">
+  <div class="card">
+    <h3>3. What is the purpose of the essay?</h3>
+    <p>Sample placeholder text explaining purpose.</p>
+  </div>
+</div>
+
+<div class="section fade">
+  <img src="https://cdn.pixabay.com/photo/2016/03/27/19/54/people-1284253_1280.jpg">
+  <div class="card">
+    <h3>4. Explain the last sentence according to what you have learned from the lesson</h3>
+    <p>Sample placeholder reflection.</p>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <h3>Academic Citation</h3>
+  <p>
+    McQuail, D. (2010). <i>McQuail’s Mass Communication Theory</i>. Sage Publications.<br>
+    Media Literacy Council. (n.d.). Understanding Media Influence.
+  </p>
+</footer>
+
+<script>
+function scrollToContent() {
+  document.querySelector("nav").scrollIntoView();
+}
+
+function toggleMode() {
+  document.body.classList.toggle("light");
+}
+
+function searchSections(q) {
+  document.querySelectorAll(".section").forEach(s => {
+    s.style.display = s.innerText.toLowerCase().includes(q.toLowerCase())
+      ? "block" : "none";
+  });
+}
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add("show");
+  });
+});
+document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
