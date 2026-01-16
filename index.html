@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,215 +5,145 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Untold Reality of Media</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --bg-dark: #0b0b0b;
-  --bg-light: #f5f1e8;
-  --text-dark: #f5f1e8;
-  --text-light: #0b0b0b;
-  --accent: #8b6f4e;
-  --navy: #0f1c2e;
+:root{
+  --bg:#0b0f1a;
+  --card:#141a2e;
+  --text:#f5f1e8;
+  --accent:#8b6b4f;
 }
-
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: var(--bg-dark);
-  color: var(--text-dark);
-  transition: background 0.4s, color 0.4s;
+.light{
+  --bg:#f5f1e8;
+  --card:#ffffff;
+  --text:#0b0f1a;
 }
-
-body.light {
-  background: var(--bg-light);
-  color: var(--text-light);
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:0.4s;
 }
-
-h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
-}
-
-.fade {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ---------- HERO ---------- */
-#cover {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  padding: 60px;
-  align-items: center;
-}
-
-.hero-img {
-  border-radius: 20px;
-  min-height: 320px;
+header{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:2rem;
   background:
-    linear-gradient(180deg, rgba(15,28,46,0.4), rgba(0,0,0,0.8)),
-    url("https://cdn.pixabay.com/photo/2016/11/29/04/17/newspaper-1866885_1280.jpg");
-  background-size: cover;
-  background-position: center;
+  linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+  url('https://images.unsplash.com/photo-1495020689067-958852a7765e');
+  background-size:cover;
+  background-position:center;
 }
-
-button {
-  background: var(--accent);
-  border: none;
-  color: white;
-  padding: 14px 26px;
-  border-radius: 30px;
-  cursor: pointer;
-  margin-right: 10px;
+header h1{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;
 }
-
-/* ---------- NAV ---------- */
-nav {
-  position: sticky;
-  top: 0;
-  background: rgba(15,28,46,0.9);
-  padding: 14px 10%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  backdrop-filter: blur(10px);
+header button{
+  margin-top:1rem;
+  padding:.8rem 1.5rem;
+  border:none;
+  background:var(--accent);
+  color:white;
+  cursor:pointer;
 }
-
-nav input {
-  padding: 8px 14px;
-  border-radius: 20px;
-  border: none;
+.toggle{
+  position:fixed;
+  top:15px;
+  right:15px;
+  padding:.5rem 1rem;
+  background:var(--accent);
+  border:none;
+  color:white;
 }
-
-/* ---------- CONTENT ---------- */
-main {
-  padding: 80px 12%;
+section{
+  max-width:900px;
+  margin:3rem auto;
+  padding:2rem;
+  background:var(--card);
+  border-radius:15px;
+  opacity:0;
+  transform:translateY(30px);
+  transition:.7s;
 }
-
-.section {
-  margin-bottom: 80px;
+section.visible{
+  opacity:1;
+  transform:translateY(0);
 }
-
-.section img {
-  width: 100%;
-  border-radius: 16px;
-  margin-bottom: 20px;
+section img{
+  width:100%;
+  border-radius:10px;
+  margin-bottom:1rem;
 }
-
-.card {
-  border-left: 6px solid var(--accent);
-  padding: 30px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 16px;
+h2{
+  font-family:'Playfair Display',serif;
 }
-
-/* ---------- FOOTER ---------- */
-footer {
-  padding: 60px 12%;
-  font-size: 0.9rem;
-  border-top: 1px solid rgba(255,255,255,0.2);
-}
-
-.toggle {
-  cursor: pointer;
-  font-size: 0.9rem;
+footer{
+  text-align:center;
+  padding:2rem;
+  font-size:.9rem;
 }
 </style>
 </head>
 
 <body>
 
-<section id="cover" class="fade">
-  <div>
-    <h1>Untold Reality<br>of Media</h1>
-    <p>A critical reflection on authorship, audience, and media influence.</p>
-    <button onclick="scrollToContent()">Enter Blog</button>
-  </div>
-  <div class="hero-img"></div>
+<button class="toggle" onclick="toggleMode()">Toggle Mode</button>
+
+<header>
+  <h1>Untold Reality of Media</h1>
+  <p>An academic reflection on influence, exposure, and impact</p>
+  <button onclick="document.getElementById('s1').scrollIntoView()">Read Essay</button>
+</header>
+
+<section id="s1">
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+<h2>Why is the author writing this?</h2>
+<p>The author Suman shafi wrote the excerpt to shed light on the reality of madia—its positive and negative effects. Due to the prevalence of media throughout the world, it has bean usid primarily to succeed. So the author wants to emphasize the underlying impact regarding the use and exposure to media.</p>
 </section>
 
-<nav>
-  <h2>Untold Reality of Media</h2>
-  <div>
-    <input placeholder="Search…" onkeyup="searchSections(this.value)">
-    <span class="toggle" onclick="toggleMode()">🌓</span>
-  </div>
-</nav>
+<section>
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+<h2>To whom is the author writing?</h2>
+<p>Suman Shafis point of view is in second-person, therefore the author is pertaining to the readers — whom are exposed to media. The numerous instances of the author stating "you" supports this, so that it further encapsulates and immerses the readers thoughts.</p>
+</section>
 
-<main>
+<section>
+<img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2">
+<h2>What is the purpose of the essay?</h2>
+<p>The essay is an example of a persuasive essay—aiming to awaken the readers from the positive and negative impac of media. Its sole purpose is to call to action among media authors and distributors, in providing sufficient information about the after-effects of the impact of media.</p>
+</section>
 
-<div class="section fade">
-  <img src="https://cdn.pixabay.com/photo/2017/08/06/11/44/journalism-2592336_1280.jpg">
-  <div class="card">
-    <h3>1. Why is the author writing this?</h3>
-    <p>Sample placeholder text explaining the author’s intent.</p>
-  </div>
-</div>
-
-<div class="section fade">
-  <img src="https://cdn.pixabay.com/photo/2016/11/29/09/08/adult-1868750_1280.jpg">
-  <div class="card">
-    <h3>2. To whom is the author writing?</h3>
-    <p>Sample placeholder text describing the intended audience.</p>
-  </div>
-</div>
-
-<div class="section fade">
-  <img src="https://cdn.pixabay.com/photo/2015/09/05/20/02/office-925806_1280.jpg">
-  <div class="card">
-    <h3>3. What is the purpose of the essay?</h3>
-    <p>Sample placeholder text explaining purpose.</p>
-  </div>
-</div>
-
-<div class="section fade">
-  <img src="https://cdn.pixabay.com/photo/2016/03/27/19/54/people-1284253_1280.jpg">
-  <div class="card">
-    <h3>4. Explain the last sentence according to what you have learned from the lesson</h3>
-    <p>Sample placeholder reflection.</p>
-  </div>
-</div>
-
-</main>
+<section>
+<img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d">
+<h2>Explain the last sentence according to what you have learned from the lesson</h2>
+<p>The concluding sentence is anchored around the negative effects of media. Specifically, the success of the lasting impact it has on viewers. It seeks to shed light on the after-effects that media provides. This is supported by the stated examples on nejative effects of media—influence, risks to well-being, and violence.</p>
+</section>
 
 <footer>
-  <h3>Academic Citation</h3>
-  <p>
-    McQuail, D. (2010). <i>McQuail’s Mass Communication Theory</i>. Sage Publications.<br>
-    Media Literacy Council. (n.d.). Understanding Media Influence.
-  </p>
+<p><strong>Academic Reference</strong></p>
+<p>Shafi, S. (n.d.). Untold reality of media. Educational excerpt.</p>
 </footer>
 
 <script>
-function scrollToContent() {
-  document.querySelector("nav").scrollIntoView();
+function toggleMode(){
+  document.body.classList.toggle('light');
 }
-
-function toggleMode() {
-  document.body.classList.toggle("light");
-}
-
-function searchSections(q) {
-  document.querySelectorAll(".section").forEach(s => {
-    s.style.display = s.innerText.toLowerCase().includes(q.toLowerCase())
-      ? "block" : "none";
-  });
-}
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add("show");
+const sections=document.querySelectorAll('section');
+window.addEventListener('scroll',()=>{
+  sections.forEach(sec=>{
+    if(sec.getBoundingClientRect().top<window.innerHeight-100){
+      sec.classList.add('visible');
+    }
   });
 });
-document.querySelectorAll(".fade").forEach(el => observer.observe(el));
 </script>
 
 </body>
