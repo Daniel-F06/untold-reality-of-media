@@ -27,6 +27,7 @@ body{
   background:var(--bg);
   color:var(--text);
   transition:0.4s;
+  line-height:1.6;
 }
 header{
   min-height:100vh;
@@ -53,6 +54,10 @@ header button{
   background:var(--accent);
   color:white;
   cursor:pointer;
+  transition:0.3s;
+}
+header button:hover{
+  opacity:0.9;
 }
 .toggle{
   position:fixed;
@@ -62,13 +67,22 @@ header button{
   background:var(--accent);
   border:none;
   color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+.toggle:hover{
+  opacity:0.9;
+}
+main{
+  max-width:900px;
+  margin:0 auto;
+  padding:2rem;
 }
 section{
-  max-width:900px;
-  margin:3rem auto;
-  padding:2rem;
   background:var(--card);
   border-radius:15px;
+  margin:3rem 0;
+  padding:2rem;
   opacity:0;
   transform:translateY(30px);
   transition:.7s;
@@ -100,42 +114,64 @@ footer{
 <header>
   <h1>Untold Reality of Media</h1>
   <p>An academic reflection on influence, exposure, and impact</p>
-  <button onclick="document.getElementById('s1').scrollIntoView()">Read Essay</button>
+  <button onclick="document.getElementById('essay').scrollIntoView()">Read Essay</button>
 </header>
 
-<section id="s1">
-<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
-<h2>Why is the author writing this?</h2>
-<p>The author Suman shafi wrote the excerpt to shed light on the reality of media—its positive and negative effects. Due to the prevalence of media throughout the world, it has bean used primarily to succeed. So the author wants to emphasize the underlying impact regarding the use and exposure to media.</p>
-</section>
+<main>
+  <!-- Essay Excerpt Section -->
+  <section id="essay">
+    <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" alt="Media illustration">
+    <h2>Essay Excerpt</h2>
+    <p>
+      Media is a single-faced communication venue. It tells you what is there and it puts you into
+      its grip, but it does not suggest you or tell you what problems you may face later with it. For
+      instance, you may want to become super-anorexic now, and you may succeed too, but later
+      the eating disorders might ruin your life. You might purchase a beauty product which is
+      exactly the same to what your favorite celebrity uses. With so much engrossment into
+      advertisements, you later start facing skin problems or rashes that you realize are going to
+      exist forever. Watching violence on television may be entertaining at first, but what if the
+      next day you see your kid carrying a gun at school which according to him is "just for fun!!"
+      Media succeeds in creating a current successful impact on its viewers, but it does not
+      provide sufficient information about the after-effects of such a success.
+    </p>
+  </section>
 
-<section>
-<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
-<h2>To whom is the author writing?</h2>
-<p>Suman Shafis point of view is in second-person, therefore the author is pertaining to the readers — whom are exposed to media. The numerous instances of the author stating "you" supports this, so that it further encapsulates and immerses the readers thoughts.</p>
-</section>
+  <!-- Original Analysis Sections -->
+  <section>
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Author writing illustration">
+    <h2>Why is the author writing this?</h2>
+    <p>The author Suman Shafi wrote the excerpt to shed light on the reality of media—its positive and negative effects. Due to the prevalence of media throughout the world, it has been used primarily to succeed. So the author wants to emphasize the underlying impact regarding the use and exposure to media.</p>
+  </section>
 
-<section>
-<img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2">
-<h2>What is the purpose of the essay?</h2>
-<p>The essay is an example of a persuasive essay—aiming to awaken the readers from the positive and negative impac of media. Its sole purpose is to call to action among media authors and distributors, in providing sufficient information about the after-effects of the impact of media.</p>
-</section>
+  <section>
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="Audience illustration">
+    <h2>To whom is the author writing?</h2>
+    <p>Suman Shafi's point of view is in second-person, therefore the author is pertaining to the readers — whom are exposed to media. The numerous instances of the author stating "you" supports this, so that it further encapsulates and immerses the readers' thoughts.</p>
+  </section>
 
-<section>
-<img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d">
-<h2>Explain the last sentence according to what you have learned from the lesson</h2>
-<p>The concluding sentence is anchored around the negative effects of media. Specifically, the success of the lasting impact it has on viewers. It seeks to shed light on the after-effects that media provides. This is supported by the stated examples on nejative effects of media—influence, risks to well-being, and violence.</p>
-</section>
+  <section>
+    <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2" alt="Purpose illustration">
+    <h2>What is the purpose of the essay?</h2>
+    <p>The essay is an example of a persuasive essay—aiming to awaken the readers to both the positive and negative impact of media. Its sole purpose is to call to action among media authors and distributors, in providing sufficient information about the after-effects of the impact of media.</p>
+  </section>
+
+  <section>
+    <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d" alt="Conclusion illustration">
+    <h2>Explain the last sentence according to what you have learned from the lesson</h2>
+    <p>The concluding sentence is anchored around the negative effects of media. Specifically, the lasting impact it has on viewers. It seeks to shed light on the after-effects that media provides. This is supported by the stated examples on negative effects of media—influence, risks to well-being, and violence.</p>
+  </section>
+</main>
 
 <footer>
-<p><strong>Academic Reference</strong></p>
-<p>Shafi, S. (n.d.). Untold reality of media. Educational excerpt.</p>
+  <p><strong>Academic Reference</strong></p>
+  <p>Shafi, S. (n.d.). Untold reality of media. Educational excerpt.</p>
 </footer>
 
 <script>
 function toggleMode(){
   document.body.classList.toggle('light');
 }
+
 const sections=document.querySelectorAll('section');
 window.addEventListener('scroll',()=>{
   sections.forEach(sec=>{
